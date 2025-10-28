@@ -463,7 +463,7 @@ namespace RBX {
 
 		if (itData == result->end()) {
 			std::string msg = response ? *response : "null";
-			FASTLOGS(FLog::DataStore, "Failed to retrieve key %s. Response: %s", key.c_str(), msg.c_str());
+			//FASTLOGS(FLog::DataStore, "Failed to retrieve key %s. Response: %s", key.c_str(), msg.c_str());
 			errorFunction("Failed to retrieve key");
 			return;
 		}

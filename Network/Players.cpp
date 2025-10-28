@@ -2130,7 +2130,7 @@ void Players::onRemoteSysStats(int userId, const std::string& stat, const std::s
 		if (willKick) {
 			StandardOut::singleton()->printf(MESSAGE_INFO, "Players::onRemoteSysStats disconnect send failed");
 			// Remove the comment at the down if you already prepared your sysstats.
-			// disconnectPlayer(userId, Replicator::DisconnectReason_OnRemoteSysStats);
+			disconnectPlayer(userId, Replicator::DisconnectReason_OnRemoteSysStats);
 		}
 		return;
 	}
@@ -2139,7 +2139,7 @@ void Players::onRemoteSysStats(int userId, const std::string& stat, const std::s
 		StandardOut::singleton()->printf(MESSAGE_INFO, "Players::onRemoteSysStats disconnect");
 		//Shut. It. Down.
 		// Remove the comment at the down if you already prepared your sysstats.
-		// disconnectPlayer(userId, Replicator::DisconnectReason_OnRemoteSysStats);
+		disconnectPlayer(userId, Replicator::DisconnectReason_OnRemoteSysStats);
 	}
 }
 

@@ -125,7 +125,6 @@ public:
 	rbx::signal<void(const std::string &)> screenshotReadySignal;
 	rbx::signal<void(bool)> screenshotUploadSignal;
 
-
 	rbx::signal<void(bool)> graphicsQualityShortcutSignal;
 
 	rbx::signal<void()> allowedGearTypeChanged;
@@ -227,8 +226,6 @@ private:
 
     bool                                networkStatsWindowsOn;
 
-	bool								isRobloxApp;
-
 	bool                                renderGuisActive;
 
 	RBX::Game*							game;
@@ -250,8 +247,6 @@ private:
 	std::auto_ptr<std::istream> loadAssetIdIntoStream(int assetID);
 public:
 	static bool BlockingDataModelShutdown;
-
-	static bool isXboxApp;
 
     static unsigned int perfStats; // another bitmask used to record detected hacks
 
@@ -384,9 +379,6 @@ public:
 	bool isStudio() const { return runningInStudio; }
 	void setIsStudio(bool runningInStudio);
 
-	bool getIsXboxApp() const { return isXboxApp; }
-	void setIsXboxApp(bool value);
-
 	bool isRunMode() const { return isStudioRunMode; }
 	void setIsRunMode(bool value);
 
@@ -498,8 +490,6 @@ public:
 
     void save(ContentId contentId);
 	static bool canSave(const RBX::Instance* instance);
-
-	
 
 	bool getRemoteBuildMode();
 	void setRemoteBuildMode(bool remoteBuildMode);

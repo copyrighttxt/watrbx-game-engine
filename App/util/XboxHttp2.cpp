@@ -340,7 +340,7 @@ namespace RBX
         sysTime += (__int64)10000000 * 3600 * 24 * 365 * 100;
 
         XHR_COOKIE site1Cookie = {};
-        site1Cookie.pwszUrl = L".sitetest1.pizzaboxer.fun/";
+        site1Cookie.pwszUrl = L".sitetest1.robloxlabs.com/";
         site1Cookie.pwszName = L"SnickerdoodleConstraint";
         site1Cookie.pwszValue = L"";
         site1Cookie.ftExpires = (FILETIME&)sysTime;

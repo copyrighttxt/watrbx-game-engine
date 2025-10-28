@@ -37,7 +37,7 @@ bool Replicator::NetPmcResponseItem::write(RakNet::BitStream& bitStream)
     bitStream << static_cast<unsigned char>(RockeyNetPmcResponse);
     bitStream << idx;
     bitStream << response;
-    bitStream << correct;
+    bitStream << static_cast<unsigned long long>(correct);
 	return true;
 }
 

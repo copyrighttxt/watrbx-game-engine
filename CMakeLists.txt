@@ -19,7 +19,7 @@ file(TO_CMAKE_PATH "${CONTRIB_PATH}" CONTRIB_PATH)
 message(STATUS "CONTRIB_PATH=${CONTRIB_PATH}")
 
 set(Boost_NO_SYSTEM_PATHS ON)
-set(BOOST_ROOT ${CONTRIB_PATH}/boost_1_70_0)
+set(BOOST_ROOT ${CONTRIB_PATH}/boost_1_55_0)
 set(Boost_INCLUDE_DIR ${BOOST_ROOT}/)
 include_directories(${Boost_INCLUDE_DIR})
 string(TOLOWER ${CMAKE_BUILD_TYPE} RBX_BUILD_TYPE)
@@ -30,6 +30,7 @@ add_compile_options(
     -Wno-c++11-narrowing
     -Wno-reserved-user-defined-literal
     -Wno-missing-field-initializers
+    -Wnonportable-include-path
 )
 
 set(CMAKE_CXX_STANDARD 14)
@@ -84,7 +85,6 @@ if(NOT RBX_SETTINGS_INITIALIZED)
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall" CACHE STRING "" FORCE)
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unknown-pragmas -Wno-unused-variable -Wno-unused-local-typedefs -Wno-main" CACHE STRING "" FORCE)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-reorder -Wno-unused-local-typedefs" CACHE STRING "" FORCE)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11" CACHE STRING "" FORCE)
   set(RBX_SETTINGS_INITIALIZED TRUE CACHE INTERNAL "" FORCE)
 endif()
 

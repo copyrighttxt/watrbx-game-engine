@@ -187,6 +187,7 @@
     <PublishDLLDependencyBeforeTargets />
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir_71A)lib;$(CONTRIB_PATH)\boost_1_56_0\lib;</LibraryPath>
+    <IncludePath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);$(CONTRIB_PATH)\boost_1_56_0\lib;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NoOpt|ARM'">
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
@@ -986,7 +987,6 @@ echo placeholder &gt; ..\WindowsClient\$(Platform)\$(Configuration)\boost.pdb
     <ClInclude Include="..\Win\AuthenticationMarshallar.h" />
     <ClInclude Include="Crypt.h" />
     <ClInclude Include="..\Win\dinput.h" />
-    <ClInclude Include="discord_rpc.h" />
     <ClInclude Include="Document.h" />
     <ClInclude Include="..\Win\DSVideoCaptureEngine.h" />
     <ClInclude Include="..\Win\DumpErrorUploader.h" />

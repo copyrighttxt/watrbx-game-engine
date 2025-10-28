@@ -27,8 +27,6 @@ list(APPEND SOURCES ${libwww_ROOT}/HTParse.c)
 set_source_files_properties(${libwww_ROOT}/HTParse.c PROPERTIES COMPILE_FLAGS "${libwww_cflags}")
 list(APPEND SOURCES ${libwww_ROOT}/HTString.c)
 set_source_files_properties(${libwww_ROOT}/HTString.c PROPERTIES COMPILE_FLAGS "${libwww_cflags}")
-list(APPEND SOURCES ${libwww_ROOT}/HTTrace.c)
-set_source_files_properties(${libwww_ROOT}/HTTrace.c PROPERTIES COMPILE_FLAGS "${libwww_cflags}")
 
 if(UNIX)
   list(APPEND SOURCES util/Unix/ProgramMemoryChecker.cpp)

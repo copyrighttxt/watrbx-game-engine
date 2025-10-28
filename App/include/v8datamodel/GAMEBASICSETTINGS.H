@@ -5,33 +5,37 @@
 
 namespace RBX
 {
-	extern const char *const sGameBasicSettings;
+	extern const char* const sGameBasicSettings;
 	class GameBasicSettings
 		: public GlobalBasicSettingsItem<GameBasicSettings, sGameBasicSettings>
 	{
 		typedef GlobalBasicSettingsItem<GameBasicSettings, sGameBasicSettings> Super;
 	public:
-		enum ControlMode {CONTROL_CLASSIC = 0, CONTROL_MOUSELOCK = 1, CONTROL_HYBRID = 2, CONTROL_CAMLOCK = 3, CONTROL_MOUSEPAN = 4};
-		enum RenderQualitySetting {QUALITY_AUTO = 0, QUALITY_1 = 1, QUALITY_2 = 2, QUALITY_3 = 3, QUALITY_4 = 4, QUALITY_5 = 5, QUALITY_6 = 6, QUALITY_7 = 7, QUALITY_8 = 8, QUALITY_9 = 9, QUALITY_10 = 10}; 
-		enum CameraMode {CAMERA_MODE_DEFAULT = 0, CAMERA_MODE_CLASSIC = 1, CAMERA_MODE_FOLLOW = 2};
+		enum ControlMode { CONTROL_CLASSIC = 0, CONTROL_MOUSELOCK = 1, CONTROL_HYBRID = 2, CONTROL_CAMLOCK = 3, CONTROL_MOUSEPAN = 4 };
+		enum RenderQualitySetting { QUALITY_AUTO = 0, QUALITY_1 = 1, QUALITY_2 = 2, QUALITY_3 = 3, QUALITY_4 = 4, QUALITY_5 = 5, QUALITY_6 = 6, QUALITY_7 = 7, QUALITY_8 = 8, QUALITY_9 = 9, QUALITY_10 = 10 };
+		enum CameraMode { CAMERA_MODE_DEFAULT = 0, CAMERA_MODE_CLASSIC = 1, CAMERA_MODE_FOLLOW = 2 };
 		enum TouchCameraMovementMode {
-			TOUCH_CAMERA_MOVEMENT_MODE_DEFAULT = 0, 
-			TOUCH_CAMERA_MOVEMENT_MODE_CLASSIC = 1, 
-			TOUCH_CAMERA_MOVEMENT_MODE_FOLLOW = 2 };
+			TOUCH_CAMERA_MOVEMENT_MODE_DEFAULT = 0,
+			TOUCH_CAMERA_MOVEMENT_MODE_CLASSIC = 1,
+			TOUCH_CAMERA_MOVEMENT_MODE_FOLLOW = 2
+		};
 		enum ComputerCameraMovementMode {
-			COMPUTER_CAMERA_MOVEMENT_MODE_DEFAULT = 0, 
-			COMPUTER_CAMERA_MOVEMENT_MODE_CLASSIC = 1, 
-			COMPUTER_CAMERA_MOVEMENT_MODE_FOLLOW = 2};
-		enum TouchMovementMode { 
-			TOUCH_MOVEMENT_MODE_DEFAULT = 0, 
-			TOUCH_MOVEMENT_MODE_THUMBSTICK = 1, 
-			TOUCH_MOVEMENT_MODE_DPAD = 2, 
-			TOUCH_MOVEMENT_MODE_THUMBPAD = 3, 
-			TOUCH_MOVEMENT_MODE_CLICK_TO_MOVE = 4 };
-		enum ComputerMovementMode { 
-			COMPUTER_MOVEMENT_MODE_DEFAULT = 0, 
-			COMPUTER_MOVEMENT_MODE_KBD_MOUSE = 1, 
-			COMPUTER_MOVEMENT_MODE_CLICK_TO_MOVE = 2};
+			COMPUTER_CAMERA_MOVEMENT_MODE_DEFAULT = 0,
+			COMPUTER_CAMERA_MOVEMENT_MODE_CLASSIC = 1,
+			COMPUTER_CAMERA_MOVEMENT_MODE_FOLLOW = 2
+		};
+		enum TouchMovementMode {
+			TOUCH_MOVEMENT_MODE_DEFAULT = 0,
+			TOUCH_MOVEMENT_MODE_THUMBSTICK = 1,
+			TOUCH_MOVEMENT_MODE_DPAD = 2,
+			TOUCH_MOVEMENT_MODE_THUMBPAD = 3,
+			TOUCH_MOVEMENT_MODE_CLICK_TO_MOVE = 4
+		};
+		enum ComputerMovementMode {
+			COMPUTER_MOVEMENT_MODE_DEFAULT = 0,
+			COMPUTER_MOVEMENT_MODE_KBD_MOUSE = 1,
+			COMPUTER_MOVEMENT_MODE_CLICK_TO_MOVE = 2
+		};
 		enum YearSettings {
 			Year2016 = 0,
 			Year2015 = 1,
@@ -40,7 +44,8 @@ namespace RBX
 		};
 		enum RotationType {
 			ROTATION_TYPE_MOVEMENT_RELATIVE = 0,
-			ROTATION_TYPE_CAMERA_RELATIVE = 1};
+			ROTATION_TYPE_CAMERA_RELATIVE = 1
+		};
 
 		static Reflection::PropDescriptor<GameBasicSettings, float> prop_masterVolume;
 
@@ -88,14 +93,14 @@ namespace RBX
 		void setFreeLook(bool canLook) { freeLook = canLook; }
 		bool getFreeLook() { return freeLook; }
 
-		bool inClassicMode()	{ return controlMode == CONTROL_CLASSIC; }
-		bool inMouseLockMode()	{ return controlMode == CONTROL_MOUSELOCK; }
-		bool inHybridMode()		{ return controlMode == CONTROL_HYBRID; }
-		bool inCamlockMode()	{ return controlMode == CONTROL_CAMLOCK; }
-		bool inMousepanMode()	{ return controlMode == CONTROL_MOUSEPAN; }
-		
-		bool mouseLockedInMouseLockMode()	{ return inMouseLockMode() && isMouseLocked(); }
-		bool camLockedInCamLockMode()		{ return inCamlockMode() && !getFreeLook(); }
+		bool inClassicMode() { return controlMode == CONTROL_CLASSIC; }
+		bool inMouseLockMode() { return controlMode == CONTROL_MOUSELOCK; }
+		bool inHybridMode() { return controlMode == CONTROL_HYBRID; }
+		bool inCamlockMode() { return controlMode == CONTROL_CAMLOCK; }
+		bool inMousepanMode() { return controlMode == CONTROL_MOUSEPAN; }
+
+		bool mouseLockedInMouseLockMode() { return inMouseLockMode() && isMouseLocked(); }
+		bool camLockedInCamLockMode() { return inCamlockMode() && !getFreeLook(); }
 
 		bool getTutorialState(std::string tutorialId);
 		void setTutorialState(std::string tutorialId, bool value);
@@ -118,11 +123,11 @@ namespace RBX
 
 		bool getFullScreenConst() const { return fullscreen; }
 		bool getFullScreen() { return fullscreen; }
-		void setFullScreen(bool value) 
-		{ 
-			if(value != fullscreen)
+		void setFullScreen(bool value)
+		{
+			if (value != fullscreen)
 			{
-				fullscreen = value; 
+				fullscreen = value;
 				fullscreenChangedSignal(value);
 			}
 		}
@@ -143,12 +148,12 @@ namespace RBX
 		void setMouseSensitivity(float value);
 
 		bool inStudioMode() { return studio; }
-		void setStudioMode(bool value) 
+		void setStudioMode(bool value)
 		{
-			if(value != studio)
+			if (value != studio)
 			{
 				studioModeChangedSignal(value);
-				studio = value; 
+				studio = value;
 			}
 		}
 
@@ -157,7 +162,7 @@ namespace RBX
 
 		std::string getGoogleAnalyticsClientId() const;
 		void setGoogleAnalyticsClientId(const std::string& id);
-		
+
 		/*override*/ void reset();
 		/*override*/ void verifySetParent(const Instance* instance) const;
 
@@ -166,7 +171,7 @@ namespace RBX
 		rbx::signal<void(bool)> fullscreenChangedSignal;
 		rbx::signal<void(bool)> studioModeChangedSignal;
 
-	private:	
+	private:
 		ControlMode controlMode;
 		RenderQualitySetting renderQualitySetting;
 		YearSettings currentYear;

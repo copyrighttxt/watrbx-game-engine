@@ -1081,12 +1081,12 @@ bool Http::isStrictlyRobloxSite(const char* url)
     {
         RBX::Url parsed = RBX::Url::fromString(url);
     
-        return parsed.isSubdomainOf("watrbx.wtf") || parsed.isSubdomainOf("pizzaboxer.fun");
+        return parsed.isSubdomainOf("watrbx.wtf") || parsed.isSubdomainOf("robloxlabs.com");
     }
 
     std::string host(HTParse(url, NULL, PARSE_HOST));
     if ("watrbx.wtf" != host && !hasEnding(host, ".watrbx.wtf") 
-        && "pizzaboxer.fun" != host && !hasEnding(host, ".pizzaboxer.fun"))
+        && "robloxlabs.com" != host && !hasEnding(host, ".robloxlabs.com"))
     {
         return false;
     }
@@ -1119,7 +1119,7 @@ bool Http::isRobloxSite(const char* url)
             urlPath.MakeLower();
 
             // trust urls from watrbx.wtf
-			if (hostName.Right(10)=="watrbx.wtf" || hostName.Right(14)=="pizzaboxer.fun")
+			if (hostName.Right(10)=="watrbx.wtf" || hostName.Right(14)=="robloxlabs.com")
 				return true;
 
             // trust facebook login
@@ -1159,7 +1159,7 @@ bool Http::isRobloxSite(const char* url)
     
         const bool isRoblox =
             parsed.isSubdomainOf("watrbx.wtf") ||
-            parsed.isSubdomainOf("pizzaboxer.fun");
+            parsed.isSubdomainOf("robloxlabs.com");
 
         const bool isFacebook =
             ("login.facebook.com" == parsed.host()
@@ -1206,7 +1206,7 @@ bool Http::isRobloxSite(const char* url)
 
     return
         "watrbx.wtf" == host || hasEnding(host, ".watrbx.wtf") ||
-        "pizzaboxer.fun" == host || hasEnding(host, ".pizzaboxer.fun") ||
+        "robloxlabs.com" == host || hasEnding(host, ".robloxlabs.com") ||
         // trust facebook login
         ("login.facebook.com" == host && "/login.php") ||
         ("ssl.facebook.com" == host && "/connect/uiserver.php" == path) ||
@@ -1240,7 +1240,7 @@ bool Http::isExternalRequest(const char* url)
 
         std::string hostname = urlParsed.GetHostName();
 
-        if(hostname.find("watrbx.wtf") != std::string::npos || hostname.find("pizzaboxer.fun") != std::string::npos)
+        if(hostname.find("watrbx.wtf") != std::string::npos || hostname.find("robloxlabs.com") != std::string::npos)
             return false;
 
         return true;
@@ -1256,7 +1256,7 @@ bool Http::isExternalRequest(const char* url)
         }
 
         return !parsed.isSubdomainOf("watrbx.wtf")
-            && !parsed.isSubdomainOf("pizzaboxer.fun");
+            && !parsed.isSubdomainOf("robloxlabs.com");
     }
 
     std::string host;
@@ -1274,7 +1274,7 @@ bool Http::isExternalRequest(const char* url)
 
     return
         "watrbx.wtf" != host && !hasEnding(host, ".watrbx.wtf") &&
-        "pizzaboxer.fun" != host && !hasEnding(host, ".pizzaboxer.fun");
+        "robloxlabs.com" != host && !hasEnding(host, ".robloxlabs.com");
 }
 
 void Http::setProxy(const std::string& host, long port)

@@ -1074,16 +1074,6 @@ bool Application::ParseArguments(const char* argv)
             #endif
         }
 
-		if (vm.count("app")) {
-			if (auto dm = currentDocument->getGame()->getDataModel()) {
-				dm->submitTask(boost::bind(&Document::Start, currentDocument.get(), boost::make_shared_future(std::string()), SharedLauncher::Play, false, getVRDeviceName()), DataModelJob::Write);
-				dm->setIsXboxApp(true);
-				dm->startCoreScripts(true, "XStarterScript");
-				dm->loadContent(ContentId("rbxasset://ScaledWorldv4.7.rbxl"));
-			}	
-			launchMode = SharedLauncher::Play; 
-		}
-
 		// used to determine how we will initialize datamodel
 		if (vm.count("play"))
 			launchMode = SharedLauncher::Play;

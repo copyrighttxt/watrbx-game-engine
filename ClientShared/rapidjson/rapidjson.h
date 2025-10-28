@@ -268,7 +268,7 @@ public:
 		// Realloc process: allocate and copy memory, do not free original buffer.
 		void* newBuffer = Malloc(newSize);
 		RAPIDJSON_ASSERT(newBuffer != 0);	// Do not handle out-of-memory explicitly.
-		return memcpy(newBuffer, originalPtr, originalSize);
+		return static_cast<char*>(memcpy(newBuffer, originalPtr, originalSize));
 	}
 
 	//! Frees a memory block (concept Allocator)

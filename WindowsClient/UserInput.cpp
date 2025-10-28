@@ -345,7 +345,7 @@ void UserInput::acquireKeyboard()
 	diKeyboardPtr->Unacquire();		// for good measure
 
 	HRESULT hr = diKeyboardPtr->SetCooperativeLevel(wnd,
-		DISCL_FOREGROUND | DISCL_EXCLUSIVE);
+		DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
 	if (hr != DI_OK)
 	{
 		DXINPUT_TRACE("diKeyboardPtr->SetCooperativeLevel failed %d\n", hr);

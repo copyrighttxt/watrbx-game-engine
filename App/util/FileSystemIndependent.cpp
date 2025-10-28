@@ -81,7 +81,7 @@ boost::filesystem::path getBaseCacheDirectory(bool create)
     boost::filesystem::path path = boost::filesystem::temp_directory_path();
 
 #ifndef RBX_PLATFORM_IOS
-    path /= "watrbx";
+    path /= "Roblox";
 #endif
 
 #if defined(_DEBUG) || defined(_NOOPT)

@@ -27,7 +27,7 @@ template<>
 int Bridge<EventInstance>::on_index(const EventInstance& object, const char* name, lua_State *L)
 {
 	// The pre-defined "connect()" method
-	if (strcmp(name, "connect") == 0 || strcmp(name, "Connect") == 0)
+	if (strcmp(name, "connect")==0)
 	{
 		lua_pushcfunction(L, EventBridge::connect);
 		return 1;

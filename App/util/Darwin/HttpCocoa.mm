@@ -303,7 +303,7 @@ static NSString* kHttpRunLoopMode = @"RobloxHttpController";
     if (kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber10_8)
     {
         if ([protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust])
-            return [protectionSpace.host rangeOfString:@".pizzaboxer.fun"].location != NSNotFound;
+            return [protectionSpace.host rangeOfString:@".robloxlabs.com"].location != NSNotFound;
     }
     return NO;
 }
@@ -313,7 +313,7 @@ static NSString* kHttpRunLoopMode = @"RobloxHttpController";
     if (kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber10_8)
     {
         if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust] &&
-            ([challenge.protectionSpace.host rangeOfString:@".pizzaboxer.fun"].location != NSNotFound))
+            ([challenge.protectionSpace.host rangeOfString:@".robloxlabs.com"].location != NSNotFound))
         {
             // trust the credentials...
             [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
@@ -353,7 +353,7 @@ int rbx_isRobloxSite(const char* url)
     
     if (!isRobloxUrl)
     {
-        textRange =[host rangeOfString:@".pizzaboxer.fun"];
+        textRange =[host rangeOfString:@".robloxlabs.com"];
         isRobloxUrl = textRange.location != NSNotFound;
     }
     

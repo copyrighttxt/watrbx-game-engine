@@ -221,7 +221,6 @@ static Reflection::BoundFuncDesc<DataModel, void()> toggleFunction(&DataModel::t
 
 static Reflection::PropDescriptor<DataModel, bool> prop_isPersonalServer("IsPersonalServer", category_State, &DataModel::getIsPersonalServer, &DataModel::setIsPersonalServer, Reflection::PropertyDescriptor::SCRIPTING, Security::RobloxScript);
 static Reflection::PropDescriptor<DataModel, bool> prop_canSaveLocal("LocalSaveEnabled", category_State, &DataModel::canSaveLocal, NULL, Reflection::PropertyDescriptor::UI, Security::RobloxScript);
-static Reflection::PropDescriptor<DataModel, bool> prop_isXboxApp("isXboxApp", category_State, &DataModel::getIsXboxApp, &DataModel::setIsXboxApp, Reflection::PropertyDescriptor::UI, Security::RobloxScript);
 
 
 static Reflection::BoundYieldFuncDesc<DataModel, bool()> saveToRobloxFunction(&DataModel::saveToRoblox, "SaveToRoblox", Security::RobloxScript);
@@ -526,7 +525,6 @@ private:
 	}
 };
 
-bool RBX::DataModel::isXboxApp = false;
 
 static std::string tempTag()
 {
@@ -543,9 +541,6 @@ bool DataModel::canSave(const RBX::Instance* instance)
 	return true;
 }  
 
-void DataModel::setIsXboxApp(bool isXboxApp) {
-	this->isXboxApp = isXboxApp;
-}
 
 bool DataModel::serverSavePlace(const SaveFilter saveFilter, boost::function<void(bool)> resumeFunction, boost::function<void(std::string)> errorFunction)
 {

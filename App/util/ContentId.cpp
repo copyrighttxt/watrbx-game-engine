@@ -195,7 +195,7 @@ namespace RBX
             std::string host = parsed.host();
             std::string path = parsed.path();
 
-            static const std::string testsite_domain = "pizzaboxer.fun";
+            static const std::string testsite_domain = "robloxlabs.com";
 
             const RBX::Url baseUrlParsed = RBX::Url::fromString(baseUrl);
 
@@ -278,7 +278,7 @@ namespace RBX
 
             if (boost::istarts_with(path, paths[i]) && (path.size() == pathLength || path[pathLength] == '?'))
             {
-                static const char* domain = ".pizzaboxer.fun";
+                static const char* domain = ".robloxlabs.com";
 
                 if (DFFlag::UrlReconstructToAssetGame)
                 {

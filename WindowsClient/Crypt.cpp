@@ -277,7 +277,7 @@ bool VerifyCryptSignature(const std::wstring& fileName)
         // signer info structure.
         if (GetProgAndPublisherInfo(pSignerInfo, &ProgPubInfo))
         {
-			if (StrCmpW(ProgPubInfo.lpszProgramName, L"Roblox Application") != 0)
+			if (StrCmpW(ProgPubInfo.lpszProgramName, L"watrbx application") != 0)
             {
 				result = false;
 				__leave;
@@ -289,7 +289,7 @@ bool VerifyCryptSignature(const std::wstring& fileName)
             //    wprintf(L"Publisher Link : %s\n", ProgPubInfo.lpszPublisherLink);
             //}
 
-			if (StrCmpW(ProgPubInfo.lpszMoreInfoLink, L"http://www.roblox.com ") != 0)
+			if (StrCmpW(ProgPubInfo.lpszMoreInfoLink, L"http://www.watrbx.wtf ") != 0)
             {
 				result = false;
 				__leave;

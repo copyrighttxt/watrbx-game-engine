@@ -28,7 +28,7 @@ local WaitingToSave = false
 
 local PlaceId = Game.PlaceId
 local Url = ContentProviderService.BaseUrl
-local UrlBase = Url:match('^http://www\.(.-)/?$') -- Turns "http://www.gametest1.pizzaboxer.fun/" into "gametest1.pizzaboxer.fun"
+local UrlBase = Url:match('^http://www\.(.-)/?$') -- Turns "http://www.gametest1.watrbx.local/" into "gametest1.watrbx.local"
 local ApiProxyUrl = 'https://api.' ..  UrlBase
 
 -----------------

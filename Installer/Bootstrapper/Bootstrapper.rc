@@ -125,7 +125,7 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,6,3,172
+ FILEVERSION 1,6,7,167
  PRODUCTVERSION 1,6,0,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
@@ -143,7 +143,7 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "watrbx"
             VALUE "FileDescription", "watrbx"
-            VALUE "FileVersion", "1, 6, 3, 180"
+            VALUE "FileVersion", "1, 6, 7, 167"
             VALUE "LegalCopyright", "(C) 2012 ROBLOX Corporation.  All rights reserved."
             VALUE "OriginalFilename", "Roblox.exe"
             VALUE "ProductName", "watrbx Bootstrapper"

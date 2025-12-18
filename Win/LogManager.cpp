@@ -219,7 +219,7 @@ LONG RobloxCrashReporter::ProcessException(struct _EXCEPTION_POINTERS *info, boo
 	if (!showedMessage && !noMsg)
 	{
 		showedMessage = true;
-		::MessageBox( NULL, "An unexpected error occurred and ROBLOX needs to quit.  We're sorry!", "ROBLOX Crash", MB_OK );
+		::MessageBox( NULL, "An unexpected error occurred and watbx needs to quit, go jump off a bridge or sum idk", "watrbx crashed", MB_OK );
 	}
 
 	LogManager::ReportEvent(EVENTLOG_INFORMATION_TYPE, "DoneProcessException");

@@ -593,11 +593,13 @@ static int luaopen_math_rbx(lua_State* L)
 	return 1;
 }
 
-static int luaopen_debug_rbx(lua_State* L)
-{
-	luaL_register(L, "debug", LuaDebugExtension::registry);
-	return 1;
-}
+//static int luaopen_debug_rbx(lua_State* L)
+//{
+//	luaL_register(L, "debug", LuaDebugExtension::registry);
+//	return 1;
+//}
+
+// please dont break anything
 
 bool ScriptContext::openState(size_t idx)
 {
@@ -651,7 +653,7 @@ bool ScriptContext::openState(size_t idx)
 
         loadLibraryProtected(globalState, luaopen_math_rbx);
         loadLibraryProtected(globalState, luaopen_table);
-		loadLibraryProtected(globalState, luaopen_debug_rbx);
+		//loadLibraryProtected(globalState, luaopen_debug_rbx);
 
 		// TODO: Where do these go?
 		//load(thread, LUA_LOADLIBNAME, luaopen_package);
@@ -1858,10 +1860,7 @@ int ScriptContext::debuggermanager(lua_State *thread)
 
 int ScriptContext::printidentity(lua_State *thread)
 {
-	if (lua_gettop(thread)>0)
-		StandardOut::singleton()->printf(MESSAGE_OUTPUT, "%s %d", lua_tostring(thread, -1), Security::Context::current().identity);
-	else
-		StandardOut::singleton()->printf(MESSAGE_OUTPUT, "Current identity is %d", Security::Context::current().identity);
+	StandardOut::singleton()->printf(MESSAGE_OUTPUT, "You've lost identity privilege. Good Luck! ;P");
 	return 0;
 }
 

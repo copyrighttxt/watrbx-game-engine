@@ -179,7 +179,7 @@ const int kApproximateSizeOfSmoothDelta = 16;
 
 REFLECTION_BEGIN();
 static Reflection::EventDesc<Replicator, void(std::string, bool)> event_Disconnection(&Replicator::disconnectionSignal, "Disconnection", "peer", "lostConnection", Security::LocalUser);
-static Reflection::BoundFuncDesc<Replicator, shared_ptr<Instance>()> func_SendMarker(&Replicator::sendMarker, "SendMarker", Security::LocalUser);
+//static Reflection::BoundFuncDesc<Replicator, shared_ptr<Instance>()> func_SendMarker(&Replicator::sendMarker, "SendMarker", Security::Roblox);
 static Reflection::BoundFuncDesc<Replicator, void()> func_requestCharacter(&Replicator::requestCharacter, "RequestCharacter", Security::LocalUser);
 static Reflection::BoundFuncDesc<Replicator, void()> func_closeConnection(&Replicator::closeConnection, "CloseConnection", Security::LocalUser);
 static Reflection::BoundFuncDesc<Replicator, shared_ptr<Instance>()> prop_RemotePlayer(&Replicator::getPlayer, "GetPlayer", Security::None);
@@ -4880,32 +4880,32 @@ void Replicator::requestDisconnectWithSignal(DisconnectReason reason)
 	requestDisconnect(reason);
 }
 
-shared_ptr<Instance> Replicator::sendMarker()
-{
-	shared_ptr<Marker> marker = Creatable<Instance>::create<Marker>();
+//shared_ptr<Instance> Replicator::sendMarker()
+//{
+	//shared_ptr<Marker> marker = Creatable<Instance>::create<Marker>();
 
-	shared_ptr<RakNet::BitStream> bitStream(new RakNet::BitStream());
-	*bitStream << (unsigned char) ID_REQUEST_MARKER;
+	//shared_ptr<RakNet::BitStream> bitStream(new RakNet::BitStream());
+	//*bitStream << (unsigned char) ID_REQUEST_MARKER;
 
-	int id = marker->id;
+	//int id = marker->id;
 
-	*bitStream << id;
+	//*bitStream << id;
 
-	FASTLOG1(FLog::Network, "Replicator:SendMarker id(%d)", id);
+	//FASTLOG1(FLog::Network, "Replicator:SendMarker id(%d)", id);
 
-	if (settings().printInstances) {
-		RBX::StandardOut::singleton()->printf(RBX::MESSAGE_SENSITIVE,
-			"Replicator: Requesting Marker %d of %s",
-			id, RakNetAddressToString(remotePlayerId).c_str());
-	}
+	//if (settings().printInstances) {
+	//	RBX::StandardOut::singleton()->printf(RBX::MESSAGE_SENSITIVE,
+	//		"Replicator: Requesting Marker %d of %s",
+	//		id, RakNetAddressToString(remotePlayerId).c_str());
+	//}
 
-	incomingMarkers.push(marker);
+	//incomingMarkers.push(marker);
 
 	// Send ID_REQUEST_MARKER
-	rakPeer->Send(bitStream, networkSettings->getDataSendPriority(), RELIABLE, DATA_CHANNEL, remotePlayerId, false);
+	//rakPeer->Send(bitStream, networkSettings->getDataSendPriority(), RELIABLE, DATA_CHANNEL, remotePlayerId, false);
 
-	return marker;
-}
+	//return marker;
+//}
 
 size_t Replicator::getAdjustedMtuSize() const
 {

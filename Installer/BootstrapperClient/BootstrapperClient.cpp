@@ -691,7 +691,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 	CTimedMutexLock lock(mutex);
 	while (lock.Lock(1) == WAIT_TIMEOUT )
 	{
-		LOG_ENTRY("Another process is starting Roblox. Abandoning startRobloxApp");
+		LOG_ENTRY("Another process is starting watrbx. Abandoning startRobloxApp");
 		return;
 	}
 
@@ -699,7 +699,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 
 	setStage(10);
 
-	message("Starting ROBLOX...");
+	message("Starting watrbx...");
 
 	LOG_ENTRY("Creating event");
 	CEvent robloxStartedEvent(NULL, TRUE, FALSE, _T("www.watrbx.wtf/robloxStartedEvent"));
@@ -726,7 +726,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 			if (fromInstall)
 				url = format_string(_T("%S%s"), BaseHost().c_str(), _T("/download/thankyou"));
 			else
-				url = format_string(_T("%S%s"), BaseHost().c_str(), _T("/Games.aspx"));
+				url = format_string(_T("%S%s"), BaseHost().c_str(), _T("/games"));
 
 
 			bool launcherStarted = false;
@@ -747,7 +747,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 			{
 				if (url.find(_T("www.")) != 0 && url.find(_T("http:")) != 0) 
 				{
-					url = format_string(_T("http://%s"), url.c_str());
+					url = format_string(_T("https://%s"), url.c_str());
 				}
 				LOG_ENTRY1("Redirectings to page url=%S", url.c_str());
 				ShellExecute(0, _T("open"), url.c_str(), 0, 0, 1);
@@ -1043,8 +1043,8 @@ void BootstrapperClient::registerFirefoxPlugin(const TCHAR* id, bool is64Bits)
 	CRegKey key = CreateKey(parent, format_string(_T("SOFTWARE\\MozillaPlugins\\%s"), id).c_str(), NULL, is64Bits);
 
 	key.SetStringValue(_T("ProductName"), _T("Launcher"));
-	key.SetStringValue(_T("Description"), _T("Roblox Launcher"));
-	key.SetStringValue(_T("Vendor"), _T("Roblox"));
+	key.SetStringValue(_T("Description"), _T("watrbx launcher"));
+	key.SetStringValue(_T("Vendor"), _T("watrbx"));
 	key.SetStringValue(_T("Version"), _T("1"));
 
 	if (is64Bits)

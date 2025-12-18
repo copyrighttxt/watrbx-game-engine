@@ -116,7 +116,7 @@ static void initVersion1()
 	// INTERNALiosapp, 2e427f51c4dab762fe9e3471c6cfa1650841723b
 	RBX::Network::securityKey = RBX::rot13("rs91650po2qq4439s3q2r889os35oo0s52q90854");
 #elif defined(_WIN32)
-	//0.235.0pcplayeraskljfLUZF, sha1: 2d83a36443889941b170fe68cfe3cc6d718b1abb, then rot13 and put below
+	//0.2.0pcplayeraskljfLUZF, sha1: 2d83a36443889941b170fe68cfe3cc6d718b1abb, then rot13 and put below
 	RBX::Network::securityKey = RBX::rot13("rs91650po2qq4439s3q2r889os35oo0s52q90854");
 #elif defined(__APPLE__) && defined(__i386)
 	//0.235.0macplayeraskljfLUZF, sha1: a7377e56dedd0d8e0fecafbec93cf00f0b2edca1, then rot13 and put below

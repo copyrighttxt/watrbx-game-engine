@@ -46,18 +46,18 @@ void NetworkFixture::startClient(DataModelFixture& dm, bool waitForClientToRecei
             args.values[0] = shared_ptr<RBX::Lua::GenericFunction>(new RBX::Lua::GenericFunction(boost::bind(&accepted, &characterLoadedEvent)));
             
 			// hack: doing this in script, because sometimes SendMarker returns bad memory in c++ (only observed here) 
-            const char* requestCharacterScript ="success = ...\n"\
-                                                "local nc = game:GetService('NetworkClient')\n"\
-                                                "local replicator = nc:GetChildren()[1]\n"\
-                                                "local marker = replicator:SendMarker()\n"\
-                                                "marker.Received:connect(function() replicator:RequestCharacter() end)\n"\
-                                                "local waitTime = 0\n"\
-                                                "while waitTime < 60 do\n"\
-                                                "   local t = wait(1)\n"\
-                                                "   waitTime = waitTime + t\n"\
-                                                "   if game.Players.LocalPlayer.Character ~= nil then success() break end\n"\
-                                                "end\n";
-            RBX_REQUIRE_NO_EXECEPTION(dm.execute(requestCharacterScript, args));
+            //const char* requestCharacterScript ="success = ...\n"\
+            //                                    "local nc = game:GetService('NetworkClient')\n"\
+            //                                    "local replicator = nc:GetChildren()[1]\n"\
+            //                                   "local marker = replicator:SendMarker()\n"\
+            //                                    "marker.Received:connect(function() replicator:RequestCharacter() end)\n"\
+            //                                    "local waitTime = 0\n"\
+            //                                    "while waitTime < 60 do\n"\
+            //                                    "   local t = wait(1)\n"\
+            //                                    "   waitTime = waitTime + t\n"\
+            //                                    "   if game.Players.LocalPlayer.Character ~= nil then success() break end\n"\
+            //                                    "end\n";
+            //WRBX_REQUIRE_NO_EXECEPTION(dm.execute(requestCharacterScript, args));
             
 		}
 		BOOST_REQUIRE(characterLoadedEvent.Wait(RBX::Time::Interval::from_seconds(60)));

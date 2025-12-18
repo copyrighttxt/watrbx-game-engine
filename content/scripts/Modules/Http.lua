@@ -582,7 +582,7 @@ end
 			// Returns true if the user owns the asset, otherwise, returns false
 ]]
 function Http.GetUserOwnsAssetAsync(userId, assetId)
-	-- local BaseUrl = 'http://api.sitetest2.pizzaboxer.fun/'
+	-- local BaseUrl = 'http://api.sitetest2.watrbx.local/'
 	return rbxApiGetAsync(BaseUrl..'ownership/hasasset?userId='..tostring(userId)..'&assetId='..tostring(assetId), false)
 end
 
@@ -627,7 +627,7 @@ end
 function Http.GetUserOwnedPackagesAsync(userId, currentPage)
 	currentPage = currentPage or 1
 	local packageAssetIdType = 32
-	-- return rbxGetAsync('http://www.sitetest2.pizzaboxer.fun/' ..'users/inventory/list-json?userId='..tostring(userId)..
+	-- return rbxGetAsync('http://www.sitetest2.watrbx.local/' ..'users/inventory/list-json?userId='..tostring(userId)..
 	-- 	'&assetTypeId='..tostring(packageAssetIdType)..'&pageNumber='..tostring(currentPage))
 	return rbxGetAsync(BaseUrl..'users/inventory/list-json?userId='..tostring(userId)..
 		'&assetTypeId='..tostring(packageAssetIdType)..'&pageNumber='..tostring(currentPage))
@@ -651,7 +651,7 @@ function Http.PostWearUserOutfitAsync(id)
 end
 
 function Http.PostWearAssetAsync(assetId)
-	--local BaseUrl = 'http://api.gametest5.pizzaboxer.fun/'
+	--local BaseUrl = 'http://api.gametest5.watrbx.local/'
 	return rbxApiPostAsync('appearance/set-clothing?assetIds='..tostring(assetId), '', false)
 end
 

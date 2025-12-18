@@ -95,7 +95,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     // will cause issues.
     if (!G3D::System::hasSSE2())
     {
-        MessageBoxA(NULL, "This platform lacks SSE2 support.", "ROBLOX", MB_OK);
+        MessageBoxA(NULL, "This platform lacks SSE2 support.", "watrbx", MB_OK);
         return false;
     }
 
@@ -143,7 +143,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	{
 		const char* const errorMessage = e.what();
 		FASTLOGS(FLog::RobloxWndInit, "Error during initialization. User message = %s", errorMessage);
-		MessageBoxA(hWnd, errorMessage, "ROBLOX", MB_OK);
+		MessageBoxA(hWnd, errorMessage, "watrbx", MB_OK);
 		app.AboutToShutdown();
 		app.Shutdown();
 		return FALSE;

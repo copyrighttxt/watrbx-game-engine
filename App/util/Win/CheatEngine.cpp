@@ -252,6 +252,16 @@ namespace RBX {
             return false;
         }
 
+        bool startsWith(const char* str, const char* prefix) {
+            if (!str || !prefix) return false;
+            while (*prefix) {
+                if (*str != *prefix) return false;
+                ++str; ++prefix;
+            }
+            return true;
+        }
+
+
         // Code generation.  This is equivalent to strCmp(x, "ComboLBox") == 0
         bool cmpComboLBox(const char* inString)
         {
@@ -377,7 +387,7 @@ bool HwndScanner::detectTitle() const
 {
     for(std::vector<fullWindowInfo>::const_iterator it = hwndScanResults.begin(); it != hwndScanResults.end(); ++it )
     {
-        if (CryptStrings::cmpPrefixCheatEngine(it->title.c_str()))
+        if (CryptStrings::cmpPrefixCheatEngine(it->title.c_str()) || CryptStrings::startsWith(it->title.c_str(), "Citeful") || CryptStrings::startsWith(it->title.c_str(), "Extreme Injector") || CryptStrings::startsWith(it->title.c_str(), "Process Hacker") || CryptStrings::startsWith(it->title.c_str(), "DLL Injector"))
         {   
             return true;
         }

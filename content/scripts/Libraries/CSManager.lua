@@ -1,6 +1,6 @@
 local Settings = UserSettings()
 local GameSettings = Settings.GameSettings
-local YearSettingEnum = GameSettings.YearSetting
+local YearSettingEnum = GameSettings.YearSetting.Value
 local scriptContext = game:GetService("ScriptContext")
 local RobloxGui = game:GetService("CoreGui"):WaitForChild("RobloxGui")
 local RobloxGuiBackup = game:GetService("CoreGui"):WaitForChild("RobloxGuiBackup")

@@ -306,11 +306,11 @@ std::string rakIdToString(int id)
 	{
 	case ID_INVALID_PASSWORD:
 	case ID_HASH_MISMATCH:
-		return "ROBLOX version is out of date. Please uninstall and try again.";
+		return "watrbx version is out of date. please update and try again";
 	case ID_CONNECTION_ATTEMPT_FAILED:
-		return "Connection attempt failed.";
+		return "failed to connect to watrbx.";
 	case ID_SECURITYKEY_MISMATCH:
-		return "Version not compatible with server. Please uninstall and try again.";
+		return "watrbx version is out of date. please update and try again";
 	default:
 		return RBX::format("Network error %d", id);
 	}

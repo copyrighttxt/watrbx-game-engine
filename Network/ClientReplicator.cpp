@@ -355,7 +355,7 @@ namespace RBX { namespace Network {
             }
             if (isLuaLockFail)
             {
-                //RBX::Security::setHackFlagVmp<LINE_RAND4>(RBX::Security::hackFlag4, HATE_DLL_INJECTION);
+                RBX::Security::setHackFlagVmp<LINE_RAND4>(RBX::Security::hackFlag4, HATE_DLL_INJECTION);
             }
             if (isHsceUnitFail)
             {
@@ -1244,17 +1244,17 @@ void ClientReplicator::markerReceived()
 {
 }
 
-shared_ptr<Instance> ClientReplicator::sendMarker()
-{
-	shared_ptr<Instance> superMarker = Super::sendMarker();
-
-	if (Marker* marker = Instance::fastDynamicCast<Marker>(superMarker.get()))
-	{
-		marker->receivedSignal.connect(boost::bind(&ClientReplicator::markerReceived, this));
-	}
-
-	return superMarker;
-}
+//shared_ptr<Instance> ClientReplicator::sendMarker()
+//{
+//	shared_ptr<Instance> superMarker = Super::sendMarker();
+//
+//	if (Marker* marker = Instance::fastDynamicCast<Marker>(superMarker.get()))
+//	{
+//		marker->receivedSignal.connect(boost::bind(&ClientReplicator::markerReceived, this));
+//	}
+//
+//	return superMarker;
+//}
 
 void ClientReplicator::processStreamDataRegionId(Replicator::StreamJob::RegionIteratorSuccessor successorBitMask, StreamRegion::Id id)
 {

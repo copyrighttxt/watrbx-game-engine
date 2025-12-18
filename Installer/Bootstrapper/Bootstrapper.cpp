@@ -180,7 +180,7 @@ public:
 				else
 				{
 					CString message;
-					message.Format(_T("An error occured and Roblox cannot continue.\n\n%S"), e.what());
+					message.Format(_T("An error occured, watrbx cannot continue.\n\n%S"), e.what());
 					::MessageBox(NULL, message, _T("Error"), MB_OK | MB_ICONEXCLAMATION);
 				}
 				result = -1;
@@ -1359,7 +1359,7 @@ void Bootstrapper::validateAndFixChromeState()
 			if (retried)
 			{
 				int res = dialog->MessageBox(
-					_T("Roblox might not launch correctly if Chrome is open or running in the background during installation.\n\n")
+					_T("watrbx might not launch correctly if chrome is open or running in the background during installation.\n\n")
 					_T("Automatically shutdown all instances of Chrome and continue?"), _T("Warning"), MB_YESNOCANCEL);
 
 				if (res == IDYES)
@@ -1660,7 +1660,7 @@ bool Bootstrapper::checkBootstrapperVersion()
 	moduleVersionNumber = vi.GetFileVersionAsString();
 	LOG_ENTRY1("module file version: %s", moduleVersionNumber.c_str());
 
-	message("Connecting to ROBLOX...");
+	message("connecting to watrbx...");
 	try
 	{
 		installVersion = fetchVersionGuid(); // TODO: Why is this setting the installVersion?
@@ -1742,7 +1742,7 @@ bool Bootstrapper::checkBootstrapperVersion()
 
 			try
 			{
-				message("Getting the latest Roblox...");
+				message("getting the latest woblox...");
 
 				// We could use an "exe" extension, but hiding the type isn't a bad idea?
 				newBootstrapper = simple_logger<wchar_t>::get_temp_filename(_T("tmp"));
@@ -1932,7 +1932,7 @@ void Bootstrapper::checkOSPrerequisit()
 
 	LOG_ENTRY("checkOSPrerequisit failed");
 	if (windowed)
-		dialog->DisplayError("Roblox requires Microsoft Windows XP SP1 or greater", NULL);
+		dialog->DisplayError("watrbx requires Microsoft Windows XP SP1 or greater", NULL);
 	throw installer_error_exception(installer_error_exception::OsPrerequisite);
 }
 
@@ -1942,7 +1942,7 @@ void Bootstrapper::checkCPUPrerequisit()
 	{
 		LOG_ENTRY("checkCPUPrerequisit failed");
 	    if (windowed)
-		    dialog->DisplayError("Roblox requires SSE2 support", NULL);
+		    dialog->DisplayError("watrbx requires SSE2 support", NULL);
 		throw installer_error_exception(installer_error_exception::CpuPrerequisite);
 	}
 }
@@ -1955,7 +1955,7 @@ void Bootstrapper::checkDirectXPrerequisit()
 	{
 		log << "checkDirectXPrerequisit failed\n"; log.flush();
 		if (windowed)
-			dialog->DisplayError("Roblox requires DirectX 9.0 or greater", NULL);
+			dialog->DisplayError("watrbx requires DirectX 9.0 or greater", NULL);
 		throw installer_error_exception(installer_error_exception::DirectxPrerequisite);
 	}
 #endif
@@ -1967,7 +1967,7 @@ void Bootstrapper::checkIEPrerequisit()
 	{
 		LOG_ENTRY("checkIEPrerequisit failed");
 		if (windowed)
-			dialog->DisplayError("Roblox requires Microsoft Internet Explorer 6.0 or greater", NULL);
+			dialog->DisplayError("watrbx requires Microsoft Internet Explorer 6.0 or greater", NULL);
 		throw installer_error_exception(installer_error_exception::IePrerequisite);
 	}
 }
@@ -2137,7 +2137,7 @@ void Bootstrapper::checkDiskSpace()
 	::GetDiskFreeSpaceEx(programDirectory().c_str(), &freeBytesAvailableToCaller, NULL, NULL);
 	if (freeBytesAvailableToCaller.QuadPart < 40*1e6)
 	{
-		dialog->DisplayError("There is not enough room on your disk to install Roblox. Please free up some space and try again.", NULL);
+		dialog->DisplayError("you do not have enough space on your hard drive for watrbx.", NULL);
 		throw installer_error_exception(installer_error_exception::DiskSpacePrerequisite);
 	}
 }
@@ -2202,10 +2202,10 @@ void Bootstrapper::run()
 			LOG_ENTRY("Error: IsNetworkAlive failed");
 			if (windowed && isLatestProcess())
 			{
-				CString message = _T("Roblox cannot connect to the Internet\n\nDoes your computer have a working network connection?  Is antivirus software preventing Roblox from accessing the Internet?");
+				CString message = _T("watrbx cannot connect to the internet.\n\nDoes your computer have a working network connection?  Is antivirus software preventing Roblox from accessing the Internet?");
 				if (!robloxAppArgs.empty())
 				{
-					message += _T("\n\nIf you continue Roblox may not work properly.");
+					message += _T("\n\nIf you continue watrbx may not work properly.");
 					// TODO: CTaskDialog should use nice command buttons
 					if (dialog->MessageBox(message, _T("Error"), MB_OKCANCEL | MB_ICONEXCLAMATION)==IDOK)
 					{
@@ -2238,10 +2238,10 @@ void Bootstrapper::run()
 
 			if (windowed && isLatestProcess())
 			{
-				CString message = _T("Cannot connect to the Roblox website.\n\nIs antivirus software preventing Roblox from accessing the Internet?");
+				CString message = _T("Cannot connect to the watrbx website.\n\nIs antivirus software preventing watrbx from accessing the Internet?");
 				if (!robloxAppArgs.empty())
 				{
-					message += _T("\n\nIf you continue Roblox may not work properly.");
+					message += _T("\n\nIf you continue watrbx may not work properly.");
 					if (dialog->MessageBox(message, _T("Error"), MB_OKCANCEL | MB_ICONEXCLAMATION)==IDOK)
 					{
 						installVersion = queryInstalledVersion();
@@ -2262,7 +2262,7 @@ void Bootstrapper::run()
 			if(queryInstalledVersion() != installVersion) 
 				throw non_zero_exit_exception();
 
-			LOG_ENTRY("Roblox is up to date, returning success");
+			LOG_ENTRY("watrbx is up to date, returning success");
 			goto done;
 		}
 
@@ -2507,7 +2507,7 @@ void Bootstrapper::run()
 	catch (non_zero_exit_exception&)
 	{
 		exitCode = 1;
-		LOG_ENTRY("Roblox is not up to date, returning failure");
+		LOG_ENTRY("watrbx is not up to date, returning failure");
 	}
 	catch (silent_exception&)
 	{

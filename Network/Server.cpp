@@ -174,6 +174,7 @@ Server::Server(void)
     scriptsByCurrentBytecode[""] = 0;
     scriptsByLegacyBytecode[""] = 0;
 	
+	
 	FASTLOG(FLog::Network, "NetworkServer:Create");
 }
 

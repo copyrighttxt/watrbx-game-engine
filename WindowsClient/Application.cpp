@@ -78,7 +78,7 @@ FASTFLAG(PlaceLauncherUsePOST)
 namespace RBX {
 
 Application::Application()
-	: logManager("Roblox", ".Client.dmp", ".Client.crashevent")
+	: logManager("watrbx", ".Client.dmp", ".Client.crashevent")
 	, crashReportEnabled(true)
 	, hideChat(false)
 	, mapFileForWnd(NULL)
@@ -437,8 +437,8 @@ void Application::UploadSessionLogs()
 			"Warning", MB_OK | MB_ICONWARNING);
 	} else {
 		MessageBoxA(mainWindow, 
-			"Logfiles will be uploaded next time you start Roblox. Please restart roblox now.", 
-			"ROBLOX", MB_OK);
+			"Logfiles will be uploaded next time you start watrbx. Please restart watrbx now.", 
+			"watrbx", MB_OK);
 	}
 }
 
@@ -447,7 +447,7 @@ void Application::OnHelp()
 	if (!DFFlag::DontOpenWikiOnClient) 
 	{
 		ShellExecute(mainWindow, "open", "rundll32.exe", 
-			"url.dll,FileProtocolHandler http://wiki.roblox.com", NULL, SW_SHOWDEFAULT);
+			"url.dll,FileProtocolHandler https://discord.gg/kwX8wvEFw6", NULL, SW_SHOWDEFAULT);
 	}
 }
 
@@ -506,7 +506,7 @@ static void doMachineIdCheck(Application* app, FunctionMarshaller* marshaller, H
 		marshaller->Execute(boost::bind(&Application::AboutToShutdown, app));
 		marshaller->Execute(boost::bind(&Application::Shutdown, app));
 		
-		MessageBoxA(hWnd, MachineIdUploader::kBannedMachineMessage, "ROBLOX", MB_OK);
+		MessageBoxA(hWnd, MachineIdUploader::kBannedMachineMessage, "watrbx", MB_OK);
 		PostMessage(hWnd, WM_CLOSE, 0, 0);
 	}
 }
@@ -611,8 +611,6 @@ bool Application::Initialize(HWND hWnd, HINSTANCE hInstance)
     initialProgramHash = ProgramMemoryChecker().getLastCompletedHash();
     RBX::pmcHash.nonce = initialProgramHash;
 
-    LuaSecureDouble::initDouble();
-
     // make our code have no rwx sections (this might not work on some computers?)
     unsigned int sizeDiff = protectVmpSections();
 
@@ -652,7 +650,6 @@ bool Application::Initialize(HWND hWnd, HINSTANCE hInstance)
 	}
 
 #if !defined(RBX_STUDIO_BUILD)
-    hookApi();
     RBX::vehHookLocationHv = reinterpret_cast<uintptr_t>(vehHookLocation);
     RBX::vehStubLocationHv = reinterpret_cast<uintptr_t>(&RtlDispatchExceptionHook);
     setupCeLogWatcher();
@@ -994,7 +991,7 @@ bool Application::ParseArguments(const char* argv)
 		{
 			std::basic_stringstream<char> options;
 			desc.print(options);
-			MessageBoxA(NULL, options.str().c_str(), "Roblox", MB_OK);
+			MessageBoxA(NULL, options.str().c_str(), "watrbx", MB_OK);
 			return false;
 		}
 
@@ -1160,7 +1157,7 @@ void Application::uploadCrashData(bool userRequested)
 				const int MAX_LOADSTRING = 400;
 				TCHAR message[MAX_LOADSTRING];
 				LoadString(GetModuleHandle(NULL), IDS_ERROR_REPORT_PROMPT, message, MAX_LOADSTRING);
-				if (MessageBoxA(mainWindow, message, "ROBLOX", MB_YESNO)==IDYES)
+				if (MessageBoxA(mainWindow, message, "watrbx", MB_YESNO)==IDYES)
 					dumpErrorUploader->Upload(dmpHandlerUrl);
 				else
 					logManager.gatherCrashLogs();
@@ -1179,14 +1176,14 @@ void Application::handleError(const std::exception& e)
 	OutputDebugString(message.c_str());
 	LogManager::ReportException(e);
 	if (!RobloxCrashReporter::silent) {
-		MessageBoxA(NULL, e.what(), "Roblox", MB_OK | MB_ICONSTOP);
+		MessageBoxA(NULL, e.what(), "watrbx", MB_OK | MB_ICONSTOP);
 	}
 }
 
 void Application::waitForNewPlayerProcess(HWND hWnd)
 {
-	static const char kPreventMultipleRobloxPlayersEventName[] = "ROBLOX_singletonEvent";
-	static const char kPreventMultipleRobloxPlayersMutexName[] = "ROBLOX_singletonMutex";
+	static const char kPreventMultipleRobloxPlayersEventName[] = "watrbx_singletonEvent";
+	static const char kPreventMultipleRobloxPlayersMutexName[] = "watrbx_singletonMutex";
 
 	// Create (or open if already created) named event
 	HANDLE event = CreateEventA(NULL, FALSE, FALSE, kPreventMultipleRobloxPlayersEventName);
@@ -1340,7 +1337,7 @@ void Application::validateBootstrapperVersion()
 			if (pos == std::string::npos)
 				return;
 
-			// from www.roblox.com or www.gametest1.pizzaboxer.fun to setup.roblox.com or setup.gametest1.pizzaboxer.fun, etc...
+			// from www.roblox.com or www.gametest1.watrbx.local to setup.roblox.com or setup.gametest1.watrbx.local, etc...
 			installHost = "http://setup" + baseUrl.substr(pos+3);
 
 			{
@@ -1554,7 +1551,7 @@ void Application::doOpenUrl(const std::string url)
 	if (HWND dialog = webView->Create( mainWindow, SW_SHOWNORMAL))
 		::ShowWindowAsync(dialog, SW_SHOWNORMAL);
 	else
-		MessageBox( mainWindow, "There was a problem opening the in-game browser.", "Roblox", MB_OK | MB_ICONSTOP);
+		MessageBox( mainWindow, "There was a problem opening the in-game browser.", "watrbx", MB_OK | MB_ICONSTOP);
 }
 
 void Application::openUrlInBrowserApp(const std::string url)

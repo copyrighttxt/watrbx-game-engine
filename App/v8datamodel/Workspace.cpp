@@ -274,7 +274,7 @@ Workspace::Workspace(IDataState* dataState)	 :
 	experimentalSolverEnabled(false),
 	expSolverEnabled_Replicate(false),
     renderingDistance(10000.f),
-	networkFilteringEnabled(false),
+	networkFilteringEnabled(true),
 	allowThirdPartySales(false)
 {
 	RBXASSERT(dataState!=NULL);

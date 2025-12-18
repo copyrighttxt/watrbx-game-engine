@@ -181,7 +181,7 @@ namespace RBX {
 			/*override*/ bool canUseProtocolVersion(int protocolVersion) const;
 			/*override*/ void receiveCluster(RakNet::BitStream& inBitstream, Instance* instance, bool usingOneQuarterIterator);
 			/*override*/ void postProcessPacket();
-			/*override*/ shared_ptr<Instance> sendMarker();
+			// /*override*/ shared_ptr<Instance> sendMarker();
 
 			const RakNet::SystemAddress getClientAddress() const {return clientAddress;}
 

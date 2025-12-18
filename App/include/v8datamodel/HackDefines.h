@@ -192,6 +192,6 @@ namespace Security
         hackFlag0, hackFlag1, hackFlag2, hackFlag3,
         hackFlag4, hackFlag5, hackFlag6, hackFlag7,
         hackFlag8, hackFlag9, hackFlag10, hackFlag11,
-        hackFlag12;
+        hackFlag12, hackFlag67;
 }
 }

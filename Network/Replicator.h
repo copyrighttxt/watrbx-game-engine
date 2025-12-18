@@ -232,7 +232,7 @@ public:
 	int getPort() const;
 	std::string getIpAddress() const;
 
-	shared_ptr<Instance> sendMarker();
+	//shared_ptr<Instance> sendMarker();
 	
 	bool isSerializePending(const Instance* instance) const;
 	bool isPropertyChangedPending(const RBX::Reflection::ConstProperty& property) const;

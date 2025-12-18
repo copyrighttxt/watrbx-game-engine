@@ -2065,18 +2065,9 @@ void Players::onRemoteSysStats(int userId, const std::string& stat, const std::s
 	bool willKick = desireKick && canKickBecauseRunningInRealGameServer;
 	// make call to handler
 	if (cheatingPlayers[userId].find(stat + message) != cheatingPlayers[userId].end()) {
-		if (FFlag::DebugLocalRccServerConnection)
-		{
-			// skip the security check
-		}
-		else
-		{
-			if (willKick) {
-				//Shut. It. Down.
-				StandardOut::singleton()->printf(MESSAGE_INFO, "Players::onRemoteSysStats disconnect not in the clist");
-				disconnectPlayer(userId, Replicator::DisconnectReason_OnRemoteSysStats);
-			}
-		}
+		//Shut. It. Down.
+		StandardOut::singleton()->printf(MESSAGE_INFO, "Players::onRemoteSysStats disconnect not in the clist");
+		disconnectPlayer(userId, Replicator::DisconnectReason_OnRemoteSysStats);
 		return;
 	}
 	else {
@@ -2105,7 +2096,10 @@ void Players::onRemoteSysStats(int userId, const std::string& stat, const std::s
 
 	}
 
-	if (sysStatsUrl.empty()) return;
+	if (sysStatsUrl.empty()){
+		StandardOut::singleton()->printf(MESSAGE_INFO, "SysStats URL Empty."); 
+		return;
+	} 
 
 	//They are using CheatEngine or Fidler or have a non-signed EXE
 	//Make the request and send it out
@@ -2126,21 +2120,16 @@ void Players::onRemoteSysStats(int userId, const std::string& stat, const std::s
 	}
 	catch (RBX::base_exception&)
 	{
-		//Something went bad with our request
-		if (willKick) {
-			StandardOut::singleton()->printf(MESSAGE_INFO, "Players::onRemoteSysStats disconnect send failed");
-			// Remove the comment at the down if you already prepared your sysstats.
-			disconnectPlayer(userId, Replicator::DisconnectReason_OnRemoteSysStats);
-		}
+		StandardOut::singleton()->printf(MESSAGE_INFO, "Players::onRemoteSysStats disconnect send failed");
+		// Remove the comment at the down if you already prepared your sysstats.
+		disconnectPlayer(userId, Replicator::DisconnectReason_OnRemoteSysStats);
 		return;
 	}
 
-	if (willKick) {
-		StandardOut::singleton()->printf(MESSAGE_INFO, "Players::onRemoteSysStats disconnect");
-		//Shut. It. Down.
-		// Remove the comment at the down if you already prepared your sysstats.
-		disconnectPlayer(userId, Replicator::DisconnectReason_OnRemoteSysStats);
-	}
+	StandardOut::singleton()->printf(MESSAGE_INFO, "Players::onRemoteSysStats disconnect");
+	//Shut. It. Down.
+	// Remove the comment at the down if you already prepared your sysstats.
+	disconnectPlayer(userId, Replicator::DisconnectReason_OnRemoteSysStats);
 }
 
 void Players::onChildAdded(Instance* child)

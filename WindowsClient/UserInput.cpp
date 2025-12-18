@@ -101,7 +101,7 @@ UserInput::UserInput(HWND wnd, shared_ptr<RBX::Game> game, View* view)
 										(VOID**)&diPtr,
 										NULL ) ) )
 	{
-		MessageBoxA(NULL, "ROBLOX could not initialize input. Please make sure you have a mouse and keyboard plugged in.", "ROBLOX", MB_OK);
+		MessageBoxA(NULL, "watrbx could not initialize input. Please make sure you have a mouse and keyboard plugged in.", "watrbx", MB_OK);
 		return;
 	}
 
@@ -172,13 +172,13 @@ void UserInput::createMouse()
 	HRESULT hr;
 	if (FAILED(hr = diPtr->CreateDevice( GUID_SysMouse, &diMousePtr, NULL)))
 	{
-		MessageBoxA(NULL, "Could not find a mouse! ROBLOX requires a mouse.", "ROBLOX", MB_OK);
+		MessageBoxA(NULL, "Could not find a mouse! watrbx requires a mouse.", "watrbx", MB_OK);
 		return;
 	}
 
 	if (FAILED(hr = diMousePtr->SetDataFormat(&c_dfDIMouse2)))
 	{
-		MessageBoxA(NULL, "Could not find a mouse (data format failed)! ROBLOX requires a mouse.", "ROBLOX", MB_OK);
+		MessageBoxA(NULL, "Could not find a mouse (data format failed)! watrbx requires a mouse.", "watrbx", MB_OK);
 		return;
 	}
 
@@ -186,7 +186,7 @@ void UserInput::createMouse()
 	getDiProp(dipdw);
 	if (FAILED(hr = diMousePtr->SetProperty(DIPROP_BUFFERSIZE, &dipdw.diph)))
 	{
-		MessageBoxA(NULL, "Could not find a mouse (set property failed)! ROBLOX requires a mouse.", "ROBLOX", MB_OK);
+		MessageBoxA(NULL, "Could not find a mouse (set property failed)! watrbx requires a mouse.", "watrbx", MB_OK);
 		return;
 	}
 }
@@ -197,13 +197,13 @@ void UserInput::createKeyboard()
 
 	if (FAILED(hr = diPtr->CreateDevice(GUID_SysKeyboard, &diKeyboardPtr, NULL)))
 	{
-		MessageBoxA(NULL, "Could not find a keyboard! ROBLOX requires a keyboard.", "ROBLOX", MB_OK);
+		MessageBoxA(NULL, "Could not find a keyboard! watrbx requires a keyboard.", "watrbx", MB_OK);
 		return;
 	}
 
 	if (FAILED(hr = diKeyboardPtr->SetDataFormat(&c_dfDIKeyboard)))
 	{
-		MessageBoxA(NULL, "Could not find a keyboard (data format failed)! ROBLOX requires a keyboard.", "ROBLOX", MB_OK);
+		MessageBoxA(NULL, "Could not find a keyboard (data format failed)! watrbx requires a keyboard.", "watrbx", MB_OK);
 		return;
 	}
 
@@ -211,7 +211,7 @@ void UserInput::createKeyboard()
 	getDiProp(dipdw);
 	if (FAILED(hr = diKeyboardPtr->SetProperty(DIPROP_BUFFERSIZE, &dipdw.diph)))
 	{
-		MessageBoxA(NULL, "Could not find a keyboard (set property failed)! ROBLOX requires a keyboard.", "ROBLOX", MB_OK);
+		MessageBoxA(NULL, "Could not find a keyboard (set property failed)! watrbx requires a keyboard.", "watrbx", MB_OK);
 		return;
 	}
 }

@@ -96,7 +96,7 @@ ns:Start(port)
 scriptContext:SetTimeout(10)
 scriptContext.ScriptsDisabled = false
 
-
+print("ratted")
 
 ------------------------------END START GAME SHARED SCRIPT--------------------------
 

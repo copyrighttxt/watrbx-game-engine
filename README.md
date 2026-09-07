@@ -1,3 +1,1 @@
-![opsec](opsec.png)
-
-water box
+jew method 2026
